@@ -9,4 +9,5 @@ add_executable(wci2 main.cpp
         error.h
         buffer.cpp
         common.h
-        common.cpp)
+        common.cpp
+        error.cpp)

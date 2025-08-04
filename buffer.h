@@ -20,9 +20,9 @@
 //              *************
 
 extern char eofChar;
-extern int   inputPosition;
-extern int   listFlag;
-extern int   level;
+extern int  inputPosition;
+extern int  listFlag;
+extern int  level;
 
 const int maxInputBufferSize = 256;
 
@@ -33,10 +33,10 @@ const int maxInputBufferSize = 256;
 class TTextInBuffer {
 
 protected:
-    fstream  file;                          // input text file
-    char    *const pFilename;               // ptr to the file name
-    char     text[maxInputBufferSize];      // input text buffer
-    int     *pChar;                         // ptr to the current char in the text buffer
+    std::fstream    file{};                       // input text file
+    char            *const pFileName;           // ptr to the file name
+    char            text[maxInputBufferSize];   // input text buffer
+    int             *pChar;                     // ptr to the current char in the text buffer
 
     virtual char GetLine(void) = 0;
 public:
@@ -45,10 +45,10 @@ public:
     virtual ~TTextInBuffer()
     {
         file.close();
-        delete pFilename;
+        delete pFileName;
     }
 
-    void Char       (void) const { return *pChar; };
+    char Char       (void) const { return *pChar; };
     char GetChar    (void);
     char PutBackChar(void);
 };

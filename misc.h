@@ -5,4 +5,7 @@
 #ifndef MISC_H
 #define MISC_H
 
+const int False = 0;
+const int True  = 1;
+
 #endif //MISC_H
