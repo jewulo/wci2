@@ -215,5 +215,5 @@ void TListBuffer::PutLine(void)
    std::cout << text << std::endl;
    text[0] = '\0';
 
-   lineCount++;
+   ++lineCount;
 }
