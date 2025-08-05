@@ -3,6 +3,18 @@
 //
 #include "common.h"
 
+/*************************************************************
+ *
+ *   COMMON
+ *
+ *   FILE:    common.cpp
+ *
+ *   MODULE:  Common
+ *
+ *   Data and routines common to the front and back ends.
+ *
+ *************************************************************/
+
 extern int currentLineNumber = 0;
 extern int currentNestingLevel = 0;
 

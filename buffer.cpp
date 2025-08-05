@@ -23,8 +23,20 @@
 #include "common.h"
 
 /******************************************************************************
- * Text Input Buffer.
- ******************************************************************************/
+ *   I/O Buffers
+ *
+ *   Process the I/O files. Included are member functions to read the
+ *   source file and write to the list file.
+ *
+ *   CLASSES: TTextInBuffer, TSourceBuffer
+ *          TTextOutBuffer, TListBuffer
+ *
+ *   FILE: buffer.cpp
+ *
+ *   MODULE: Buffer
+ *
+ * ***************************************************************************/
+
 
 char eofChar = 0x7F;  // special end-of-file character
 int  inputPosition;   // *virtual* position of the current character in the input buffer (with tabs expanded)
@@ -37,8 +49,8 @@ int listFlag = True;  // true if list source lines, else false
 // ac:             abort code to use if open failed.
 //----------------------------------------------------------------------------
 TTextInBuffer::TTextInBuffer(const char *pInputFilename, TAbortCode ac)
-   : pFileName(new char[strlen(pInputFilename) + 1]),
-     text{},
+   :  pFileName(new char[strlen(pInputFilename) + 1]),
+      text{},
       pChar(nullptr)
 {
    // -- Copy the input file name.
@@ -59,12 +71,11 @@ TTextInBuffer::TTextInBuffer(const char *pInputFilename, TAbortCode ac)
 //----------------------------------------------------------------------------
 char TTextInBuffer::GetChar(void)
 {
-
    const int tabSize = 8; // size of tabs
    char ch;               // character return
 
-   if      (*pChar == eofChar) { return  eofChar; } // end of file
-   else if (*pChar == '\0') { ch = GetLine();} // end of line
+   if      (*pChar == eofChar)   { return  eofChar; } // end of file
+   else if (*pChar == '\0')      { ch = GetLine();} // end of line
    else {
       ++pChar;
       ++inputPosition;
@@ -190,7 +201,8 @@ void TListBuffer::Initialize(const char *pFileName)
 //----------------------------------------------------------------------------
 // PutLine: Print a line of text to the list file.
 //----------------------------------------------------------------------------
-void TListBuffer::PutLine(void) {
+void TListBuffer::PutLine(void)
+{
    //--Start a new page if the current one is full.
    if (listFlag && (lineCount == maxLinesPerPage)) {
       PrintPageHeader();

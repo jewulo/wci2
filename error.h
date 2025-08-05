@@ -2,6 +2,15 @@
 // Created by jewul on 03/08/2025.
 //
 
+/******************************************************************************
+ * ERRORS
+ * Routines to handle translation-time and runtime errors.
+ *
+ * FILE: error.h
+ *
+ * MODULE: Error
+ ******************************************************************************/
+
 #ifndef ERROR_H
 #define ERROR_H
 

@@ -3,14 +3,12 @@
 //
 
 /******************************************************************************
- * ERRORS
- * Routines to handle translation-time and runtime errors.
+ *   ERRORS
+ *   Routines to handle translation-time and runtime errors.
  *
- * CLASSES: TTextInBuffer, TSourceBuffer, TTextOutBuffer, TListBuffer
+ *   FILE: error.cpp
  *
- * FILE: error.cpp
- *
- * MODULE: Buffer
+ *   MODULE: Error
  ******************************************************************************/
 
 //------------------------------------------------------------------------------

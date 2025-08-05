@@ -13,11 +13,20 @@
 #include "misc.h"
 #include "error.h"
 
-//              *************
-//              *           *
-//              *   Input   *
-//              *           *
-//              *************
+/******************************************************************************
+ * I/O Buffers
+ *
+ * Process the I/O files. Included are member functions to read the
+ * source file and write to the list file.
+ *
+ * CLASSES: TTextInBuffer, TSourceBuffer
+ *          TTextOutBuffer, TListBuffer
+ *
+ * FILE: buffer.h
+ *
+ * MODULE: Buffer
+ *
+ * ***************************************************************************/
 
 extern char eofChar;
 extern int  inputPosition;
@@ -33,12 +42,13 @@ const int maxInputBufferSize = 256;
 class TTextInBuffer {
 
 protected:
-    std::fstream    file{};                       // input text file
+    std::fstream    file{};                     // input text file
     char            *const pFileName;           // ptr to the file name
     char            text[maxInputBufferSize];   // input text buffer
     char            *pChar;                     // ptr to the current char in the text buffer
 
     virtual char GetLine(void) = 0;
+
 public:
     TTextInBuffer(const char *pInputFilename, TAbortCode ac);
 
@@ -62,6 +72,7 @@ extern char *buffer;
 class TSourceBuffer : public TTextInBuffer {
 
     virtual char GetLine(void);
+
 public:
     TSourceBuffer(const char *pSourceFileName);
 };
@@ -92,7 +103,7 @@ public:
 };
 
 //--------------------------------------------------------------------
-//      TListBuffer   List buffer subclass of TTextOutputBuffer.
+//      TListBuffer   List buffer subclass of TTextOutBuffer.
 //--------------------------------------------------------------------
 class TListBuffer : public TTextOutBuffer {
 
