@@ -36,7 +36,7 @@ protected:
     std::fstream    file{};                       // input text file
     char            *const pFileName;           // ptr to the file name
     char            text[maxInputBufferSize];   // input text buffer
-    int             *pChar;                     // ptr to the current char in the text buffer
+    char            *pChar;                     // ptr to the current char in the text buffer
 
     virtual char GetLine(void) = 0;
 public:
@@ -106,7 +106,7 @@ class TListBuffer : public TTextOutBuffer {
 public:
     virtual ~TListBuffer(void) { delete pSourceFileName; }
 
-    void Initialise(const char *fileName);
+    void Initialize(const char *fileName);
     virtual void PutLine(void);
 
     void PutLine(const char *pText)
